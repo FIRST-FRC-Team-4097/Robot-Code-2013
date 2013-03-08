@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.*;
 
 /**
@@ -24,6 +25,10 @@ import edu.wpi.first.wpilibj.templates.commands.*;
 public class RobotTemplate extends IterativeRobot {
 
     Command autonomousCommand;
+    Command driveCommand;
+    Command shootCommand;
+    Command eccentricCommand;
+    Command potCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -31,7 +36,11 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new AutonomousCommand();
+        autonomousCommand = new ExampleCommand();
+        driveCommand = new Drive();
+        shootCommand = new RunShooter();
+        eccentricCommand = new EccentricWheel();
+        potCommand = new Potentiometer();
 
         // Initialize all subsystems
         CommandBase.init();
@@ -53,8 +62,13 @@ public class RobotTemplate extends IterativeRobot {
 	// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
-        // this line or comment it out.
+        // this line or combvment it out.
         autonomousCommand.cancel();
+        driveCommand.start();
+        shootCommand.start();
+        eccentricCommand.start();
+        potCommand.start();
+        
     }
 
     /**

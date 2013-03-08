@@ -15,10 +15,14 @@ public abstract class CommandBase extends Command {
 
     public static OI oi;
     // Create a single static instance of all of your subsystems
+    public static DriveSubsystem drive = new DriveSubsystem();
     public static ShooterSubsystem shooter = new ShooterSubsystem();
-    public static DriveTrainSubsystem drive = new DriveTrainSubsystem();
+    public static LoaderSubsystem load = new LoaderSubsystem();
     public static CameraSubsystem cam = new CameraSubsystem();
-
+    public static EccentricSubsystem eccentric = new EccentricSubsystem();
+    public static PotentiometerSubsystem pot = new PotentiometerSubsystem();
+    public static LEDSubsystem led = new LEDSubsystem();
+    
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
         // will), constructing it during the construction of CommandBase (from
@@ -28,7 +32,7 @@ public abstract class CommandBase extends Command {
         oi = new OI();
 
         // Show what command your subsystem is running on the SmartDashboard
-        SmartDashboard.putData(shooter);
+        SmartDashboard.putData(drive);
     }
 
     public CommandBase(String name) {

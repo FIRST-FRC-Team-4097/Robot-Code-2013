@@ -1,12 +1,16 @@
+ /*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
  *
- * @author bradmiller
+ * @author team4097
  */
-public class ExampleCommand extends CommandBase {
-
-    public ExampleCommand() {
+public class AutoAim extends CommandBase {
+    
+    public AutoAim() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

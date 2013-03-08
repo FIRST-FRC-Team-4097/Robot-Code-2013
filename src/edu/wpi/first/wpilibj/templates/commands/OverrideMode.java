@@ -1,12 +1,17 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.DriverStationLCD;
 /**
  *
- * @author bradmiller
+ * @author team4097
  */
-public class ExampleCommand extends CommandBase {
-
-    public ExampleCommand() {
+public class OverrideMode extends CommandBase {
+    
+    public OverrideMode() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -17,11 +22,17 @@ public class ExampleCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        oi.overrideMode = !oi.overrideMode;
+        if (oi.overrideMode){
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser5, 2, "OVERRIDE MODE :P");
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser6, 2, "Good Luck Team!");
+        DriverStationLCD.getInstance().updateLCD();
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

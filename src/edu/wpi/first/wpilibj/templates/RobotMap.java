@@ -7,30 +7,30 @@ package edu.wpi.first.wpilibj.templates;
  * floating around.
  */
 public class RobotMap {
-    public static final int RIGHT_MOTOR_PORT = 0;
-    public static final int LEFT_MOTOR_PORT = 0;
+    public static final int RIGHT_MOTOR_PORT = 2;
+    public static final int LEFT_MOTOR_PORT = 1;
     
-    public static final int LEFT_JOY_PORT = 0;
-    public static final int RIGHT_JOY_PORT = 0;
-    public static final int SHOOTER_CONTROLLER_PORT = 0;
+    public static final int ANGLE_WHEEL_PORT = 6;
     
-    public static final int SHOOTER_MOTOR_PORT1 = 0;
-    public static final int SHOOTER_MOTOR_PORT2 = 0;
+//    public static final int WINCH_MOTOR_PORT = 7; // This is a sub, the final
+                                                  //version will use the proper
+                                                  //port number.
+    public static final int LEFT_JOY_PORT = 1;
+    public static final int RIGHT_JOY_PORT = 2;
+    public static final int SHOOTER_CONTROLLER_PORT = 3;
+    public static final int LED_PORT = 1;
     
-    public static final int TOP_ENCODER_A = 0;
-    public static final int TOP_ENCODER_B = 0;
-    public static final int BOTTOM_ENCODER_A = 0;
-    public static final int BOTTOM_ENCODER_B = 0;
+    public static final int SHOOTER_MOTOR_PORT1 = 3;
+    public static final int SHOOTER_MOTOR_PORT2 = 4;
+    public static final int LOADER_MOTOR_PORT = 5;
+    public static final int ECCENTRIC_MOTOR_PORT = 6;
     
-    public static final int A = 1;
-    public static final int B = 2;
-    public static final int X = 3;
-    public static final int Y = 4;
-    public static final int LEFT_BUTTON = 5;
-    public static final int RIGHT_BUTTON = 6;
-    public static final int BACK = 7;
-    public static final int START = 8;
-    public static final int TRIGGER_AXIS = 3; //left axis+ right axis-
+    public static final int LEFT_ENCODER_A = 8;
+    public static final int LEFT_ENCODER_B = 9;
+    
+    public static final int RIGHT_ENCODER_A = 10;
+    public static final int RIGHT_ENCODER_B = 11;
+    
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static final int leftMotor = 1;

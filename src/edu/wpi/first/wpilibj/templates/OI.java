@@ -1,10 +1,9 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
-import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.*;
 
@@ -17,21 +16,52 @@ public class OI {
     private Joystick rightJoy;
     private Joystick shootController;
     
-    private Button triggerButton;
+    private Button rightTriggerButton;
     private Button loadButton;
     private Button overrideButton;
+    private Button shootButton;
+    private Button shootUp;
+    private Button shootDown;
+    private Button LEDButton;
+    
+    public double control = 0;
+    public double changeSpeed = 0;
+    public boolean overrideMode = false;
     
     public OI() {        
         leftJoy = new Joystick(RobotMap.LEFT_JOY_PORT);
         rightJoy = new Joystick(RobotMap.RIGHT_JOY_PORT);
         shootController = new Joystick(RobotMap.SHOOTER_CONTROLLER_PORT);
         
-        triggerButton = new JoystickButton(shootController, 0);
-        loadButton = new JoystickButton(shootController, 0);
-        overrideButton = new JoystickButton(shootController, 0);
+        rightTriggerButton = new JoystickButton(rightJoy, 1);
         
-        triggerButton.whenPressed(new RunShooter());
+        loadButton = new JoystickButton(shootController, 9);
+        
+        shootButton = new JoystickButton(shootController, 2);
+        shootUp = new JoystickButton(shootController,6);
+        shootDown = new JoystickButton(shootController,5);
+        
+        overrideButton = new JoystickButton(shootController,8);
+        LEDButton = new JoystickButton(shootController,7);       
+
+        rightTriggerButton.whenPressed(new WriteHeight());
+        loadButton.whenPressed(new Load());
+        shootUp.whenPressed(new ShootSpeedUp());
+        shootDown.whenPressed(new ShootSpeedDown());
+        overrideButton.whenPressed(new OverrideMode());
+        LEDButton.whenPressed(new LED());
     }
+    
+    public boolean isLoadButtonPressed(){
+        return loadButton.get();
+    }
+   public boolean isShootButtonPressed(){
+       return shootButton.get();
+   }
+   
+   public boolean isInOverrideMode(){
+       return overrideButton.get();
+   }
     
     public double getRightY() {
         return rightJoy.getY();
@@ -39,6 +69,25 @@ public class OI {
     public double getLeftY() {
         return leftJoy.getY();
     }
+    public boolean getRightTrigger() {
+        return rightJoy.getTrigger();
+    }
+    
+    public boolean shootUp(){
+        return shootUp.get();
+    }
+    
+    public boolean shootDown(){
+        return shootDown.get();
+    }
+        
+    public double getEccentricAxis(){
+        return shootController.getRawAxis(5);
+    }
+        
+//    public boolean getClimbButton() {
+//        return shootController.getButton(Joystick.ButtonType.kTop);
+//    }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -71,4 +120,3 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 }
-
